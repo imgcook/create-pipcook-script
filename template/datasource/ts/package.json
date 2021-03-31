@@ -1,0 +1,36 @@
+{
+  "name": "@pipcook/datasource-script-template",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index",
+  "types": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run clean && npm run pack",
+    "pack": "webpack --config webpack.config.js",
+    "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
+    "compile": "tsc -b tsconfig.json"
+  },
+  "author": "",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "@pipcook/pipcook-core": "^2.0.0-beta.1"
+  },
+  "devDependencies": {
+    "ts-loader": "^8.0.18",
+    "typescript": "^4.2.3",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "pipcook": {
+    "category": "dataCollect",
+    "datatype": "text"
+  }
+}
