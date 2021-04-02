@@ -3,7 +3,7 @@
 /**
  * The implementation of DataAccessor, for `train`, `test` and `evaluate`
  */
-class Accessor {
+class DataAccessorImpl {
   constructor(data) {
     this.data = data;
   }
@@ -19,6 +19,9 @@ class Accessor {
   seek(pos) {
     throw new TypeError('not implemented');
   }
+  shuffle() {
+    throw new TypeError('not implemented');
+  }
 }
 class DataSource {
   constructor(url) {
@@ -30,18 +33,26 @@ class DataSource {
    *   this.train = new Accessor(this.yourData.train);
    *   this.evaluate = new Accessor([]);
    */
-  async init() {
+  init() {
     throw new TypeError('not implemented');
   }
-  async getDataSourceMeta() {
+  getDatasetMeta() {
     throw new TypeError('not implemented');
+  }
+  shuffle() {
+    this.test.shuffle();
+    this.train.shuffle();
+    this.valid?.shuffle();
   }
 }
 /**
  * This is the entry of datasource script
  */
+
 const datasourceEntry = async (option) => {
-  const { url = '' } = option;
+  const {
+    url = ''
+  } = option;
   if (!url) {
     throw new TypeError('url should be defined');
   }
