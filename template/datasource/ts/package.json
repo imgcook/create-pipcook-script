@@ -4,9 +4,6 @@
   "description": "",
   "main": "dist/index",
   "types": "dist/index",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run clean && npm run pack",
@@ -17,7 +14,8 @@
   "author": "",
   "license": "Apache 2.0",
   "dependencies": {
-    "@pipcook/pipcook-core": "^2.0.0-beta.1"
+    "@pipcook/core": "^2.0.0-rc.1",
+    "@pipcook/datacook": "^0.0.5"
   },
   "devDependencies": {
     "ts-loader": "^8.0.18",

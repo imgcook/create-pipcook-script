@@ -34,7 +34,7 @@ async function createScript(scriptType: string, scriptName: string, opts: CMDOpt
       throw new TypeError(`The directory ${scriptName} already exists`);
     }
 
-    const templateType = opts.type ? basename(opts.type) : 'ts';
+    const templateType = basename(opts.type);
     const templateSrc = resolve(__dirname, '../../template', scriptType, templateType);
     if (fs.existsSync(templateSrc)) {
       copy(templateSrc, destDir);
@@ -59,7 +59,7 @@ async function createScript(scriptType: string, scriptName: string, opts: CMDOpt
   for (const scriptType of ['datasource', 'dataflow', 'model']) {
     program
       .command(`${scriptType} <scriptName>`)
-      .option('-t --type <templeteType>')
+      .option('-t --type <templeteType>', 'template type, \'js\' and \'ts\' are supported, \'ts\' for default.', 'ts')
       .description(`create pipcook ${scriptType} script from template.`)
       .action((scriptName: string, opts: CMDOptions) => createScript(scriptType, scriptName, opts));
   }
